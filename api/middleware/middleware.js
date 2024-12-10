@@ -33,9 +33,10 @@ function validateUser(req, res, next) {
     res.status(400).json({
       message: 'missing required name field'
     })
-  } else {{
+  } else {
+    req.name = name.trim()
     next()
-  }}
+  }
 }
 
 function validatePost(req, res, next) {
@@ -45,6 +46,7 @@ function validatePost(req, res, next) {
       message: "missing required text field"
     })
   } else {
+    req.text = text.trim()
     next()
   }
 }
